@@ -4,7 +4,7 @@ import XCTest
 final class AlpineTests: XCTestCase {
     
     // Replace with the path to your test log file
-    let logFilePath = "/Users/darius/Documents/test.log"
+    let logFilePath = "test.log"
     
     override func setUp() {
         super.setUp()
