@@ -19,15 +19,15 @@ To get started with Alpine, simply add it to your project using a package manage
 
 Here's a simple example of how to log to a message with Alpine (Console-Only):
 ```swift
-    import Alpine
-    Alpine.info("My first log.")
+import Alpine
+Alpine.info("My first log.")
 ```
 
 ## File-Console Logging
 To use File-Console logging, you need to set up a log file
 ```swift
-    Alpine.setLogFile(toPath: "/Users/user/Documents/MyApp.log")
-    Alpine.hardError("We Crashed Because of this.")
+Alpine.setLogFile(toPath: "/Users/user/Documents/MyApp.log")
+Alpine.hardError("We Crashed Because of this.")
 ```
 
 ## Writers (Log Levels)
@@ -37,13 +37,13 @@ Alpine allows you to define the log levels to log for using the `writers` proper
 This property is an array of `LogLevel` values that specifies which log levels to log for.
 
 ```swift
-    // Capture debug logs only
-    Alpine.writers = [.debug]
-    Alpine.debug("Debug")
+// Capture debug logs only
+Alpine.writers = [.debug]
+Alpine.debug("Debug")
 
-    // That means that this will be ignored.
-    // Alpine.warning("Warning")
-``
+// That means that this will be ignored.
+// Alpine.warning("Warning")
+```
 
 ## Synchronous vs Asynchronous Execution Modes
 Alpine offers both synchronous and asynchronous (background) Execution Modes to provide flexibility in how you want to execute your logging process. By default, Alpine uses Synchronous mode.
@@ -51,50 +51,51 @@ Alpine offers both synchronous and asynchronous (background) Execution Modes to 
 **Synchronous Logging**: In synchronous logging mode, the logging process is executed on the same thread that initiated the log message. This mode is useful when debugging your app, where you want to ensure that the log message is logged before proceeding with the next task.
 
 ```swift
-    // Alpine is coincident by default. This is how you'd set it
-    Alpine.executionMethod = .synchronous()
-    Alpine.error("This is an error log message.")
+// Alpine is coincident by default. This is how you'd set it
+Alpine.executionMethod = .synchronous()
+Alpine.error("This is an error log message.")
 ```
 
 You can also provide your own recursive lock
 
 ```swift
-    Alpine.executionMethod = .synchronous(lock: NSRecursiveLock())
-    Alpine.error("This is an error log message.")
+Alpine.executionMethod = .synchronous(lock: NSRecursiveLock())
+Alpine.error("This is an error log message.")
 ```
 
 **Asynchronous Logging**: In asynchronous logging mode, the logging process is executed on a background thread, allowing the main thread to continue with other tasks without waiting for the log message to be logged. This mode is useful for production, where you want to log messages without affecting the performance of your application.
 ```swift
-    Alpine.executionMethod = .asynchronous()
-    Alpine.info("Here's an informational message")
+Alpine.executionMethod = .asynchronous()
+Alpine.info("Here's an informational message")
 ```
 
 You can also provide your own Dispatch Queue (It doesn't even have to have a Background QOS)
 
 ```swift
-    Alpine.executionMethod = .asynchronous(queue: DispatchQueue(label: "net.bliksem.log"))
-    Alpine.verbose("We are checking...")
+Alpine.executionMethod = .asynchronous(queue: DispatchQueue(label: "net.bliksem.log"))
+Alpine.verbose("We are checking...")
 ```
+
 ## Path Components
 Alpine allows you to customize the number of path components to display in log messages using the `pathDepth` property. This property specifies the number of path components to display in log messages.
 ```swift
-    // Path Depth = 2, get the last two path components
-    Alpine.pathDepth = 2
-    Alpine.error("An error has occured") // Will log something like (Bliksem/Blockchain.swift)
+// Path Depth = 2, get the last two path components
+Alpine.pathDepth = 2
+Alpine.error("An error has occured") // Will log something like (Bliksem/Blockchain.swift)
 ```
 
 ## Killswitch
 Ever had to search and comment all of your `print(_)` statements before lanuching your app? Well, no more.
 Alpine allows you to enable or disable logging using the `isEnabled` property. This property allows you to easily disable logging in Production mode to get back those precious milliseconds without removing your old code.
 ```swift
-    Alpine.isEnabled = false
-    Alpine.info("You won't see me :(") // This will not be logged
+Alpine.isEnabled = false
+Alpine.info("You won't see me :(") // This will not be logged
 ```
 
 You can easily re-enable it later if you need to debug some issues in your app
 ```swift
-    Alpine.isEnabled = true
-    Alpine.info("Now you see me :)") // This time it'll log
+Alpine.isEnabled = true
+Alpine.info("Now you see me :)") // This time it'll log
 ```
 
 ## ANSI Control Modifiers
