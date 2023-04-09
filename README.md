@@ -1,5 +1,6 @@
 # Alpine 🗻
 
+[![Swift](https://github.com/MiclausCorp/Alpine/actions/workflows/swift.yml/badge.svg)](https://github.com/MiclausCorp/Alpine/actions/workflows/swift.yml)
 [![Get on SPM](https://img.shields.io/badge/Available%20on-Swift%20Package%20Manager-orange?logo=swift)](#installation)
 
 Alpine is a lightweight and flexible logging library for Swift that provides an easy way to log messages in your application. It comes with a range of configuration options that allow you to customize the logging process according to your needs.
