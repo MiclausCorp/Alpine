@@ -1,5 +1,7 @@
 # Alpine 🗻
 
+[![Get on SPM](https://img.shields.io/badge/Available%20on-Swift%20Package%20Manager-orange?logo=swift)](#installation)
+
 Alpine is a lightweight and flexible logging library for Swift that provides an easy way to log messages in your application. It comes with a range of configuration options that allow you to customize the logging process according to your needs.
 
 ## Features
@@ -13,6 +15,14 @@ Alpine offers various configuration options:
 *   **Enabling or disabling logging altogether:** You can easily enable or disable logging altogether.
 
 In addition to these features, Alpine also allows you to log messages with different log levels, including verbose, debug, info, warning, error, and hard error. Colored output is provided for easier log message identification, and file logging is supported for persistent storage of log messages.
+
+## Installation
+#### Swift Package Manager
+
+You can use [Swift Package Manager](https://swift.org/package-manager/) and specify dependency in `Package.swift` by adding this:
+```swift
+.package(url: "https://github.com/MiclausCorp/Alpine.git", branch: "master")
+```
 
 ## Getting Started
 To get started with Alpine, simply add it to your project using a package manager like Swift Package Manager. Once you have added Alpine to your project, you can start using it right away.
